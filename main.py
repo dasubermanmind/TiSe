@@ -13,6 +13,11 @@
     Datasets: What I plan on using within this repo for data sets will be 
     kaggle datasets and any other **interesting** datasets that I find in the internet
     
+    What this repository is not: 
+    A production ready Time series library. It will over time morph itself into 
+    just that, but right now I am using it a playground to see everything that is within
+    this space. 
+    
 """
 
 
