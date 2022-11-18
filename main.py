@@ -13,6 +13,11 @@
     Datasets: What I plan on using within this repo for data sets will be 
     kaggle datasets and any other **interesting** datasets that I find in the internet
     
+    What this repository is not: 
+    A production ready Time series library. It will over time morph itself into 
+    just that, but right now I am using it a playground to see everything that is within
+    this space. 
+    
 """
 
 
@@ -41,6 +46,9 @@ def download_data_set(stock, start, end):
 
 # Main starting point
 if __name__ == '__main__':
+    """
+        This main functiuon is repsonsible for Figure 1
+    """
     # start times 
     start_date = datetime.datetime(2020, 1,1)
     # end 
