@@ -27,7 +27,6 @@ import datetime
 import pandas as pd
 
 
-
 def download_data_set(stock, start, end):
     data = {}
     ticker = finance.download(stock, start,end)
@@ -36,13 +35,35 @@ def download_data_set(stock, start, end):
     return pd.DataFrame(data)
 
 
+def construct_signal(data, short_period, long_period):
+    # FInd the SMA for a short time period
+    data['Short SMA'] = data['Price'].rolling(window=short_period).mean()
+    # Finf the SMA for a longer timer period
+    data['Long SMA'] = data['Price'].rolling(window=long_period).mean()
+    data = data.dropna()
+    print(data)
 
 
 
 
 
+"""
+    Notes: SMA: Unweighted mean of stock price at S(t) where t is time
+    Sma k = 1/k sum i = n-k+1 to n S(i)
+"""
 
 
+
+def plot_data(data):
+    plt.figure(figsize=(12, 6))
+    plt.plot(data['Price'], label='Stock Price', color='black')
+    plt.plot(data['Short SMA'], label='Short SMA', color='yellow')
+    plt.plot(data['Long SMA'], label='Long SMA', color='red')    
+    plt.title('Moving Average Indicators')
+    plt.show()
+    
+    
+    
 
 # Main starting point
 if __name__ == '__main__':
@@ -55,7 +76,7 @@ if __name__ == '__main__':
     end_date = datetime.datetime(2021, 1,1)
     
     stock_data = download_data_set('IBM', start_date, end_date)
-    plt.plot(stock_data)
-    plt.show()
     
-    download_data_set()
+    construct_signal(stock_data,30, 200)
+    
+    plot_data(stock_data)
